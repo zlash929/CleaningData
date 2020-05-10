@@ -29,10 +29,10 @@ test <- cbind(testSubjects, testLabels, test)
 
 merged <- rbind(train, test) # Merges the training and the test sets to create one data set
 merged <- merge(merged, labels, by.x = "index", by.y="index", all = T) # Uses descriptive activity names to name the activities in the data set
-mergedExtract = cbind(merged[,c(2,length(merged))], merged[, grepl(".mean().", names(merged))],merged[, grepl(".std().", names(merged))]) # Extracts only the measurements on the mean and standard deviation for each measurement
+mergedExtract <- cbind(merged[,c(2,length(merged))], merged[, grepl(".mean().", names(merged))],merged[, grepl(".std().", names(merged))]) # Extracts only the measurements on the mean and standard deviation for each measurement
 mergedExtractTidy <- gather(mergedExtract, variable, value, 3:length(mergedExtract)) # Create independent tidy data set
 mergedExtractTidy <- mergedExtractTidy %>% group_by(subjects, labels, variable) %>% mutate(mean(value)) # Calculate average of each variable for each activity
 mergedExtractTidy$value <- NULL
-mergedExtractTidy <- distinct(mergedExtractTidy)
+mergedExtractTidy <- distinct(mergedExtractTidy) # Remove duplicates
 
-write.table(as.matrix(mergedExtractTidy), "output.txt", row.name=FALSE)
+write.table(as.matrix(mergedExtractTidy), "output.txt", row.name=FALSE) # Extract output
