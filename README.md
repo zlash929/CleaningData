@@ -16,7 +16,7 @@ Load training and test datasets and format the labels (train and test)
 
 Merge training and test datasets and format the labels (merged)
 
-Extract columns with mean and standard deviation variables(mergedExtract)
+Extract columns with mean and standard deviation variables (mergedExtract)
 
 Convert into Tidy format (mergedExtractTidy)
 
