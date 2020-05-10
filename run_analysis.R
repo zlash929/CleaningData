@@ -36,6 +36,6 @@ calcsSubject <- mergedExtractTidy %>% group_by(subjects, variable) %>% mutate(me
 mergedExtractTidy$Activity <- calcsActivity[,5]
 mergedExtractTidy$Subject <- calcsSubject[,5]
 mergedExtractTidy$value <- NULL
-mergedExtractTidy <- distinct(mergedExtractTidy)
+mergedExtractTidy <- distinct(mergedExtractTidy) # Remove duplicates
 
-write.table(mergedExtractTidy, "output.txt", row.name=FALSE) # Extract output
+write.table(as.matrix(mergedExtractTidy), "output.txt", row.name=FALSE) # Extract output
